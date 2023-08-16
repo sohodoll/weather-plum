@@ -1,6 +1,9 @@
 * {
   font-family: 'Rubik', sans-serif;
   user-select: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .app {
@@ -10,13 +13,13 @@
   justify-content: center;
   max-width: 400px;
   margin: 0 auto;
-  background-color: $color-background;
-  border-radius: 5px;
+  background-color: white;
+  border-radius: $border-radius;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .container {
-  max-width: 380px;
+  max-width: 350px;
   width: 100%;
   margin: 0 auto;
 }

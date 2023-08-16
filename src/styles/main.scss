@@ -1,3 +1,28 @@
 .mainCities {
   text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.mainHighlight {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mainHighlight span {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.weatherDirections,
+.weatherMisc {
+  display: flex;
+  gap: 1rem;
+}
+
+.weatherDirections span {
+  text-transform: none;
 }

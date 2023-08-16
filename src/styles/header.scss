@@ -1,18 +1,18 @@
 header {
   display: flex;
-  padding: 0 1rem;
+  padding: 1rem 1.5rem;
   justify-content: space-between;
   align-items: center;
   background: $color-secondary;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
 }
 
 .headerTitle {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .settingsIcon {

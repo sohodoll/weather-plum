@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <Header :toggleSettings="toggleSettings" />
+    <Header :toggleSettings="toggleShowSettings" />
     <div class="container">
       <main class="main">
         <Main :cities="cities" :showCities="showCities" v-show="!showSettings" />
@@ -24,11 +24,11 @@ export default {
     Settings,
   },
   setup() {
-    const { cities, addCityByName } = getWeather()
+    const { cities, addCityByName } = getWeather() //this is the starting point of the app, using the composables to get all needed data
 
-    const showSettings = ref(false)
+    const showSettings = ref(false) //using ref to toggle the settings view. not using the router for this to keep the widget simple and the url clean
 
-    const toggleSettings = () => {
+    const toggleShowSettings = () => {
       showSettings.value = !showSettings.value
       console.log(cities.value)
     }
@@ -40,7 +40,7 @@ export default {
 
     return {
       showSettings,
-      toggleSettings,
+      toggleShowSettings,
       cities,
       showCities,
       addCityByName,
@@ -48,5 +48,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped></style>

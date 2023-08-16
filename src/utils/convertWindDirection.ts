@@ -1,0 +1,20 @@
+export const convertWindDirection = (windDegree: number) => {
+  if ((windDegree >= 0 && windDegree < 11.25) || (windDegree >= 348.75 && windDegree <= 360)) return 'N'
+  if (windDegree < 33.75) return 'NNE'
+  if (windDegree < 56.25) return 'NE'
+  if (windDegree < 78.75) return 'ENE'
+  if (windDegree < 101.25) return 'E'
+  if (windDegree < 123.75) return 'ESE'
+  if (windDegree < 146.25) return 'SE'
+  if (windDegree < 168.75) return 'SSE'
+  if (windDegree < 191.25) return 'S'
+  if (windDegree < 213.75) return 'SSW'
+  if (windDegree < 236.25) return 'SW'
+  if (windDegree < 258.75) return 'WSW'
+  if (windDegree < 281.25) return 'W'
+  if (windDegree < 303.75) return 'WNW'
+  if (windDegree < 326.25) return 'NW'
+  if (windDegree < 348.75) return 'NNW'
+
+  return 'N/A'
+}
