@@ -1,0 +1,15 @@
+export const convertWind = (wind: number) => {
+  if (wind < 0.4) return 'Calm'
+  if (wind < 1.6) return 'Light air'
+  if (wind < 3.4) return 'Light breeze'
+  if (wind < 5.5) return 'Gentle breeze'
+  if (wind < 8.0) return 'Moderate breeze'
+  if (wind < 10.8) return 'Fresh breeze'
+  if (wind < 13.9) return 'Strong breeze'
+  if (wind < 17.2) return 'Near gale'
+  if (wind < 20.8) return 'Gale'
+  if (wind < 24.5) return 'Strong gale'
+  if (wind < 28.5) return 'Storm'
+  if (wind < 32.7) return 'Violent storm'
+  return 'Hurricane force'
+}
