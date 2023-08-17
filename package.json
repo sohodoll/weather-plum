@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "url-loader": "^4.1.1",
     "vue": "^3.2.13",
     "vuedraggable": "^4.1.0",
     "vuex": "^4.0.0"
@@ -15,6 +16,7 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "file-loader": "^6.2.0",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
     "typescript": "~4.5.5",

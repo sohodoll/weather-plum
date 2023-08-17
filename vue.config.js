@@ -1,19 +1,27 @@
-const { defineConfig } = require('@vue/cli-service')
-const webpack = require('webpack')
-
-module.exports = defineConfig({
+module.exports = {
   transpileDependencies: true,
   publicPath: '/dist/',
   filenameHashing: false,
   productionSourceMap: false,
   configureWebpack: {
-    plugins: [
-      new webpack.optimize.LimitChunkCountPlugin({
-        maxChunks: 1,
-      }),
-    ],
+    optimization: {
+      splitChunks: false,
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                limit: Infinity,
+                name: 'fonts/[name].[hash:8].[ext]',
+              },
+            },
+          ],
+        },
+      ],
+    },
   },
-  chainWebpack: (config) => {
-    config.optimization.delete('splitChunks')
-  },
-})
+}
