@@ -1,6 +1,6 @@
 import { defineCustomElement } from 'vue'
 import WeatherWidget from './WeatherWidget.ce.vue'
-import './styles/styles.scss'
+import './assets/styles/styles.scss'
 
 const App = defineCustomElement(WeatherWidget)
 
