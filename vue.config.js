@@ -3,7 +3,7 @@ const webpack = require('webpack')
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: '/weather-widget/',
+  publicPath: '/dist/',
   filenameHashing: false,
   productionSourceMap: false,
   configureWebpack: {
