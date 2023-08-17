@@ -7,6 +7,7 @@ Example: https://exampleweather.netlify.app/
 - Pluiggable
 - Lightweight
 - Scalable
+- Mobile Ready
 - Find Cities
 - Rearrange Cities
 - Delete Cities
@@ -18,7 +19,6 @@ Example: https://exampleweather.netlify.app/
 
 ## Coming Soon
 
-- Responsiveness
 - New Features
 
 ## Tech Stack
@@ -38,7 +38,7 @@ TS, Vue, Vuedraggable, SCSS, Webpack
    
 3. Run `npm serve`
 
-4. Change the deploy and the API key
+4. Confihure the deploy and the API key (need to create .env file in the root)
 
 5. Use the new src link (your deploy)
 
