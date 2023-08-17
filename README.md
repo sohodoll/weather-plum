@@ -27,8 +27,9 @@ TS, Vue, Vuedraggable, SCSS, Webpack
 
 ## How To Use
 
-- Paste this to your website: `<weather-widget></weather-widget>
-    <script defer src="https://openweatherwidget.netlify.app/js/app.js"></script>`
+- Paste this to your website:\
+  `<weather-widget></weather-widget>`\
+  `<script defer src="https://openweatherwidget.netlify.app/js/app.js"></script>`
     
 ## Modify
 
