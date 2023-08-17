@@ -2,21 +2,21 @@
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 400;
-  src: local('Rubik'), url(./Rubik-Regular.woff2) format('woff2');
+  src: url('~@/styles/Rubik-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 500;
-  src: local('Rubik'), url(./Rubik-Medium.woff2) format('woff2');
+  src: url('~@/styles/Rubik-Medium.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Rubik';
-  font-style: bold;
-  font-weight: 700;
-  src: local('Rubik'), url(./Rubik-Bold.woff2) format('woff2');
+  font-style: normal;
+  font-weight: bold;
+  src: url('~@/styles/Rubik-Bold.woff2') format('woff2');
 }
 
 * {
