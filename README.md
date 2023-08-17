@@ -4,7 +4,7 @@ Example: https://exampleweather.netlify.app/
 
 ## Features
 
-- Pluiggable
+- Pluggable
 - Lightweight
 - Scalable
 - Mobile Ready
