@@ -27,11 +27,17 @@
 import { convertTemp } from '../utils/convertTemp'
 import { convertWind } from '../utils/convertWind'
 import { convertWindDirection } from '../utils/convertWindDirection'
+import { ICity } from '@/interfaces/ICity'
 import NavigationIcon from '../icons/NavigationIcon.vue'
 
 export default {
   name: 'City',
-  props: ['city'],
+  props: {
+    city: {
+      type: Object as () => ICity,
+      required: true,
+    },
+  },
   components: {
     NavigationIcon,
   },

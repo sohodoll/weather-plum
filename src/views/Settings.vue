@@ -6,20 +6,33 @@
         <PlusIcon />
       </button>
     </div>
-    <div class="citiesList" v-if="cities">
-      <article class="city" v-for="city in cities">
-        <div class="cityNameControls">
-          <DragIcon />
-          <span>{{ city.name }}</span>
-        </div>
-        <XIcon />
-      </article>
-    </div>
+    <span class="error" v-if="error.message">{{ error.message }}</span>
+    <draggable
+      class="citiesList"
+      item-key="element.name"
+      v-if="citiesList.length"
+      @start="drag = true"
+      @end="onDragEnd"
+      v-model="citiesList"
+    >
+      <template #item="city">
+        <article class="city">
+          <div class="cityNameControls">
+            <DragIcon />
+            <span>{{ city.element.name }}</span>
+          </div>
+          <XIcon @click="removeCity(city.element.name)" />
+        </article>
+      </template>
+    </draggable>
   </div>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue'
+import { ICity } from '@/interfaces/ICity'
+import { IWeatherError } from '@/interfaces/IWeatherError'
+import Draggable from 'vuedraggable'
 import PlusIcon from '@/icons/PlusIcon.vue'
 import XIcon from '@/icons/XIcon.vue'
 import DragIcon from '@/icons/DragIcon.vue'
@@ -30,10 +43,34 @@ export default {
     PlusIcon,
     XIcon,
     DragIcon,
+    Draggable,
   },
-  props: ['cities', 'addCityByName'],
-  setup(props: any) {
+  props: {
+    cities: {
+      type: Array as () => ICity[],
+      required: true,
+    },
+    addCityByName: {
+      type: Function,
+      required: true,
+    },
+    updateCities: {
+      type: Function,
+      required: true,
+    },
+    error: {
+      type: Object as () => IWeatherError,
+      required: true,
+    },
+  },
+  setup(props) {
+    const drag = ref(false)
     const searchQuery = ref('')
+    const citiesList = ref(props.cities) //create a copy of the cities array to use in the draggable component
+
+    const syncCities = () => {
+      props.updateCities(citiesList.value) //update the cities array in the app constructor
+    }
 
     const addCity = (cityName: string) => {
       if (cityName) {
@@ -42,9 +79,23 @@ export default {
       }
     }
 
+    const removeCity = (cityName: string) => {
+      citiesList.value = citiesList.value.filter((city: any) => city.name !== cityName)
+      syncCities()
+    }
+
+    const onDragEnd = () => {
+      drag.value = false
+      syncCities()
+    }
+
     return {
       searchQuery,
       addCity,
+      removeCity,
+      citiesList,
+      drag,
+      onDragEnd,
     }
   },
 }

@@ -9,10 +9,11 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, PropType } from 'vue'
 import CloudIcon from '@/icons/CloudIcon.vue'
 import SettingsIcon from '@/icons/SettingsIcon.vue'
 
-export default {
+export default defineComponent({
   name: 'Header',
   components: {
     CloudIcon,
@@ -20,10 +21,9 @@ export default {
   },
   props: {
     toggleSettings: {
-      type: Function,
+      type: Function as PropType<() => void>,
       required: true,
     },
   },
-  setup() {},
-}
+})
 </script>

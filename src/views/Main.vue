@@ -8,15 +8,18 @@
 
 <script lang="ts">
 import City from './City.vue'
+import { ICity } from '@/interfaces/ICity'
 
 export default {
   name: 'Main',
   components: {
     City,
   },
-  props: ['cities', 'showCities'],
-  setup() {
-    return {}
+  props: {
+    cities: {
+      type: Array as () => ICity[],
+      required: true,
+    },
   },
 }
 </script>
