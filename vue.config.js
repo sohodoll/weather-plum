@@ -2,7 +2,7 @@ const { DefinePlugin } = require('webpack')
 
 module.exports = {
   transpileDependencies: true,
-  publicPath: '/dist/',
+  publicPath: '/',
   filenameHashing: false,
   productionSourceMap: false,
   configureWebpack: {
