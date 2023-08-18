@@ -25,6 +25,7 @@
         </article>
       </template>
     </draggable>
+    <Spinner v-if="pending" />
   </div>
 </template>
 
@@ -33,6 +34,7 @@ import { ref } from 'vue'
 import { ICity } from '@/interfaces/ICity'
 import { IWeatherError } from '@/interfaces/IWeatherError'
 import Draggable from 'vuedraggable'
+import Spinner from '@/components/Spinner.vue'
 import PlusIcon from '@/icons/PlusIcon.vue'
 import XIcon from '@/icons/XIcon.vue'
 import DragIcon from '@/icons/DragIcon.vue'
@@ -44,6 +46,7 @@ export default {
     XIcon,
     DragIcon,
     Draggable,
+    Spinner,
   },
   props: {
     cities: {
@@ -60,6 +63,10 @@ export default {
     },
     error: {
       type: Object as () => IWeatherError,
+      required: true,
+    },
+    pending: {
+      type: Boolean,
       required: true,
     },
   },

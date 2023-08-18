@@ -3,8 +3,15 @@
     <Header :toggleSettings="toggleShowSettings" />
     <div class="container">
       <main class="main">
-        <Main :cities="cities" v-show="!showSettings" />
-        <Settings :error="error" :cities="cities" :updateCities="updateCities" :addCityByName="addCityByName" v-show="showSettings" />
+        <Main :cities="cities" v-show="!showSettings" :pending="pending" />
+        <Settings
+          :error="error"
+          :cities="cities"
+          :updateCities="updateCities"
+          :addCityByName="addCityByName"
+          v-show="showSettings"
+          :pending="pending"
+        />
       </main>
     </div>
   </div>
@@ -25,7 +32,7 @@ export default {
     Settings,
   },
   setup() {
-    const { cities, addCityByName, updateCities, error } = getWeather()
+    const { cities, addCityByName, updateCities, error, pending } = getWeather()
 
     const showSettings = ref(false)
 
@@ -40,6 +47,7 @@ export default {
       addCityByName,
       updateCities,
       error,
+      pending,
     }
   },
 }
