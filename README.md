@@ -8,6 +8,7 @@ Example: https://exampleweather.netlify.app/
 - Lightweight
 - Scalable
 - Mobile Ready
+- Error handling
 - Find Cities
 - Rearrange Cities
 - Delete Cities
@@ -39,7 +40,7 @@ TS, Vue, Vuedraggable, SCSS, Webpack
    
 3. Run `npm serve`
 
-4. Confihure the deploy and the API key (need to create .env file in the root)
+4. Configure the deploy and the API key (need to create .env file in the root)
 
 5. Use the new src link (your deploy)
 
