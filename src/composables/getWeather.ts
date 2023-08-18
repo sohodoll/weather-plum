@@ -5,7 +5,6 @@ import { ref, Ref } from 'vue'
 
 //this is the main logic behind the widget
 //I decided to use a simple constructor instead of vuex to keep the widget simple and lightweight
-
 const getWeather = () => {
   const cities = ref<ICity[]>(JSON.parse(localStorage.getItem('cities') || '[]'))
   const error: Ref<IWeatherError> = ref(new Error(''))
@@ -38,7 +37,6 @@ const getWeather = () => {
 
   const addCityByName = async (city: string): Promise<void> => {
     //checking for duplicates
-
     if (cities.value.find((item) => item.name === city)) {
       error.value = {
         message: 'This City is already there ;)',
@@ -48,6 +46,7 @@ const getWeather = () => {
     }
 
     pending.value = true
+
     try {
       const cityData = await getCityData(city)
       cities.value.push(cityData)
