@@ -18,13 +18,14 @@ const getWeather = () => {
       const { latitude, longitude } = position.coords
       try {
         const city = await getCityData('', longitude, latitude)
-        if (city) {
-          cities.value.push(city)
-          syncLocalStorage()
-        }
-        throw new Error("Can't get your location or city data")
+
+        cities.value.push(city)
+        syncLocalStorage()
       } catch (err) {
-        console.error(err)
+        error.value = {
+          message: "Can't get your location or city data",
+          name: 'Location Error',
+        }
       } finally {
         pending.value = false
       }
@@ -35,50 +36,28 @@ const getWeather = () => {
     localStorage.setItem('cities', JSON.stringify(cities.value))
   }
 
-  const getCity = async (cityName: string): Promise<ICity | undefined> => {
-    pending.value = true
-    try {
-      const city = await getCityData(cityName)
-      return city
-    } catch (err) {
-      console.error(err)
-    } finally {
-      console.log('here again')
-      pending.value = false
-    }
-  }
-
   const addCityByName = async (city: string): Promise<void> => {
+    //checking for duplicates
+
+    if (cities.value.find((item) => item.name === city)) {
+      error.value = {
+        message: 'This City is already there ;)',
+        name: 'City Error',
+      }
+      return
+    }
+
     pending.value = true
     try {
-      const cityData = await getCity(city)
-
-      if (cityData?.cod == '404') {
-        //checking for errors with the input
-        error.value = {
-          name: 'City Error',
-          message: 'City not found ;( Please check your input and try again.',
-        }
-        return
-      }
-
-      error.value = new Error('')
-
-      if (cityData) {
-        if (cities.value.some((city) => city.id === cityData.id)) {
-          //checking for duplicates
-          error.value = {
-            name: 'City Error',
-            message: 'This city is already there ;)',
-          }
-          return
-        }
-
-        cities.value.push(cityData)
-        syncLocalStorage()
-      }
+      const cityData = await getCityData(city)
+      cities.value.push(cityData)
+      syncLocalStorage()
+      error.value = new Error('') //reset the error
     } catch (err) {
-      console.error(err)
+      error.value = {
+        message: 'City not found. Check Your input and try again!',
+        name: 'City Error',
+      }
     } finally {
       pending.value = false
     }

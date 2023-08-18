@@ -11,5 +11,9 @@ export const getCityData = async (city: string, long?: number, lat?: number) => 
 
   const data = await response.json()
 
-  return data
+  if (data.cod === 200) {
+    return data
+  } else {
+    throw new Error("Can't get city data")
+  }
 }
